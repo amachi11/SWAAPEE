@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SWAAPE — Your Campus Community</title>
+<style>
+:root{--purple:#7139e8;--purple-dark:#5426b9;--teal:#b7fff0;--text:#251c38;--muted:#756b82;--border:#e9e2ef;--background:#f8f5fc}
+*{box-sizing:border-box}body{margin:0;background:var(--background);color:var(--text);font:16px/1.65 Arial,Helvetica,sans-serif}
+button,input,textarea,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #20bca4;outline-offset:3px}h1,h2,h3,p{margin-top:0}small{font-size:13px;color:var(--muted)}
+header{background:white;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}.header-inner{max-width:1400px;margin:auto;padding:16px 28px;display:flex;align-items:center;gap:24px}
+.brand{display:flex;align-items:center;gap:10px;flex-shrink:0}.brand-name{font-size:24px;font-weight:800;letter-spacing:1px}.logo-frame{width:55px;height:55px;position:relative;overflow:hidden;border-radius:14px;background:white}.logo-frame img{position:absolute;width:200px;max-width:none;height:100px;left:-27px;top:-13px}.logo-fallback{height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#7139e8,#20d3b5);color:white;font-size:34px;font-weight:bold}
+.campus{border-left:1px solid var(--border);padding-left:24px;font-size:13px;flex-shrink:0}.campus small{display:block}.search{flex:1;min-width:120px;border:1px solid var(--border);border-radius:14px;background:#faf7fd;padding:12px 16px}.avatar{width:47px;height:47px;border-radius:50%;border:0;display:inline-flex;align-items:center;justify-content:center;background:#e9ddff;color:#523185;font-size:14px;font-weight:bold;flex-shrink:0}
+.layout{max-width:1400px;margin:auto;padding:30px 28px 60px;display:grid;grid-template-columns:215px minmax(0,1fr) 280px;gap:28px;align-items:start}.sidebar{position:sticky;top:115px}.nav-button{width:100%;display:flex;align-items:center;gap:12px;border:0;border-radius:13px;padding:13px 15px;margin-bottom:7px;background:transparent;color:#776b88;text-align:left;font-size:14px;font-weight:600}.nav-button.active{background:#eee3ff;color:var(--purple)}.nav-button:hover{background:#f0e9fa}.nav-icon{font-size:20px;width:22px;text-align:center}.sidebar-label{font-size:11px;letter-spacing:1.5px;color:var(--muted);margin:28px 12px 12px}.sidebar-note{padding:18px;border-radius:16px;background:#eee8f8;margin-top:28px}.sidebar-note h3{font-size:17px;margin-bottom:10px}.sidebar-note .primary{width:100%}main{min-width:0}
+.primary{border:0;border-radius:12px;padding:11px 17px;background:var(--purple);color:white;font-size:14px;font-weight:600}.primary:hover{background:var(--purple-dark)}.secondary{border:1px solid var(--border);border-radius:12px;padding:10px 15px;background:white;color:var(--purple);font-size:14px;font-weight:600}.card{padding:25px;margin-bottom:24px;background:white;border:1px solid var(--border);border-radius:20px}.tag,.badge{display:inline-block;padding:5px 10px;margin:4px 4px 4px 0;border-radius:9px;font-size:12px}.tag{background:#f2ecfb;color:#69448a}.badge{background:#e5faf3;color:#286958}
+.section-heading{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin:26px 0 20px}.section-heading h2{font-size:24px;line-height:1.3;margin:0}.page-description{color:var(--muted);margin-bottom:24px;font-size:15px}.hero{background:linear-gradient(120deg,#45248f,#8243e9);border-radius:23px;padding:30px;color:white}.hero .eyebrow{color:#c5fff1;font-size:11px;letter-spacing:1.6px;text-transform:uppercase;margin-bottom:13px}.hero h1{font-size:33px;line-height:1.2;letter-spacing:-.7px;margin-bottom:16px}.hero p{color:#f0e8ff;font-size:15px;max-width:450px;margin-bottom:22px}.hero .primary{background:var(--teal);color:#24372f}
+.composer{display:flex;align-items:center;gap:14px;margin-top:25px;padding:18px}.composer button{flex:1;border:0;border-radius:12px;padding:13px;background:#faf7fd;text-align:left;color:var(--muted);font-size:14px}.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:23px}.filters button{border:1px solid var(--border);padding:8px 13px;border-radius:20px;background:white;color:#756583;font-size:12px}.filters button.active{background:var(--purple);color:white}
+.person{display:flex;align-items:center;gap:13px;margin-bottom:22px}.person strong{display:block;font-size:16px}.post h3{font-size:23px;line-height:1.35;margin-bottom:14px}.post-description{color:#6b6078;font-size:15px;margin-bottom:18px}.artwork{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:28px;margin-top:20px;border-radius:16px;background:linear-gradient(120deg,#ead9ff,#d1fff0);color:#563481}.artwork strong{font-size:28px;line-height:1.15}.artwork span{font-size:50px}
+.actions{display:flex;align-items:center;flex-wrap:wrap;gap:10px;border-top:1px solid var(--border);padding-top:19px;margin-top:22px}.action-button{border:0;border-radius:10px;padding:8px 11px;background:#f8f5fc;color:#705a82;font-size:13px}.actions .secondary{margin-left:auto}.profile-section{margin-top:18px}.profile-section strong{display:block;font-size:13px;margin-bottom:6px}.availability{color:#287d68;font-size:13px}.profile-cover{height:85px;border-radius:15px;background:linear-gradient(120deg,#753ce5,#20d3b5);margin-bottom:24px}
+.right-column .card{padding:21px}.right-column h3{font-size:18px;line-height:1.35;margin-bottom:12px}.matching{background:linear-gradient(140deg,#f0e8ff,#edfff8)}.matching textarea{min-height:100px;margin:10px 0 14px;font-size:14px}.matching .primary{width:100%}.mini-person{display:flex;align-items:center;gap:10px;margin-top:20px}.mini-person .avatar{width:37px;height:37px;font-size:12px}.mini-person strong{display:block;font-size:13px}.mini-person button{margin-left:auto;border:0;background:none;color:var(--purple);font-size:12px}.match-result{background:white;border-radius:13px;padding:15px;margin-top:15px}.match-result .person{margin-bottom:10px}.match-result p{font-size:13px}
+.event-row{display:flex;gap:12px;padding:17px 0;border-top:1px solid var(--border)}.event-date{min-width:45px;align-self:flex-start;padding:7px;border-radius:12px;background:#f0e5ff;color:#7041b0;text-align:center;font-size:10px}.event-date strong{display:block;font-size:21px}.swap-box{padding:18px;background:#f7f2ff;border-radius:13px;margin:18px 0}.swap-box p:last-child{margin-bottom:0}.empty{text-align:center;color:var(--muted);padding:40px 25px}
+label{display:block;font-size:13px;font-weight:bold;margin-bottom:7px}textarea,select,.form-input{width:100%;padding:13px;border:1px solid #ded4eb;border-radius:12px;background:white;color:var(--text)}textarea{resize:vertical}.form-group{margin-bottom:20px}.dialog{width:min(560px,calc(100% - 32px));max-height:88vh;overflow:auto;border:0;border-radius:22px;padding:28px;box-shadow:0 25px 90px #22133644}.dialog::backdrop{background:#22133688}.dialog-actions{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:12px;margin-top:26px}.toast{display:none;position:fixed;bottom:25px;left:50%;transform:translateX(-50%);max-width:calc(100% - 32px);background:#291b3c;color:white;border-radius:14px;padding:14px 20px;font-size:14px;z-index:30}
+@media(max-width:1200px){.layout{grid-template-columns:195px minmax(0,1fr)}.right-column{grid-column:2;display:grid;grid-template-columns:1fr 1fr;gap:22px}.right-column .matching{grid-column:1/-1}.right-column .card{margin-bottom:0}.right-column>small{grid-column:1/-1}.campus{display:none}}
+@media(max-width:700px){.header-inner{flex-wrap:wrap;padding:15px;gap:15px}.brand-name{font-size:21px}.search{order:3;flex-basis:100%}#myProfile{margin-left:auto}.layout{display:block;padding:20px 15px 40px}.sidebar{position:static;margin-bottom:22px}.menu-list{display:grid;grid-template-columns:1fr 1fr;gap:7px}.nav-button{margin:0;padding:10px;font-size:12px;background:#f1ebf8}.sidebar-extra{display:none}.hero{padding:25px}.hero h1{font-size:29px}.card{padding:22px}.right-column{display:block;margin-top:25px}.right-column .card{margin-bottom:22px}.actions .secondary{width:100%;margin-left:0;margin-top:5px}}
+</style>
+</head>
+<body>
+<header><div class="header-inner">
+  <div class="brand"><div class="logo-frame"><img id="brandLogo" src="swaape-logo.png" alt="SWAAPE logo"><span id="logoFallback" class="logo-fallback" hidden aria-hidden="true">S</span></div><span class="brand-name">SWAAPE</span></div>
+  <div class="campus"><strong>Saint Mary’s University</strong><small>Your campus community</small></div>
+  <input class="search" id="search" type="search" placeholder="Search people, interests, or ideas..." aria-label="Search current page">
+  <button class="avatar" id="myProfile" aria-label="My profile">AE</button>
+</div></header>
+<div class="layout">
+<aside class="sidebar">
+  <nav class="menu-list" aria-label="Main navigation">
+    <button class="nav-button active" data-page="feed"><span class="nav-icon">⌂</span>Campus Feed</button>
+    <button class="nav-button" data-page="people"><span class="nav-icon">⌕</span>Discover Talent</button>
+    <button class="nav-button" data-page="swaps"><span class="nav-icon">⇄</span>Skill Swaps</button>
+    <button class="nav-button" data-page="connections"><span class="nav-icon">↔</span>My Connections</button>
+    <button class="nav-button" data-page="saved"><span class="nav-icon">▧</span>Saved Posts</button>
+    <button class="nav-button" data-page="events"><span class="nav-icon">▦</span>Campus Events</button>
+  </nav>
+  <div class="sidebar-extra"><div class="sidebar-label">YOUR INTERESTS</div><span class="tag">Technology</span><span class="tag">Content creation</span><span class="tag">Business</span>
+    <div class="sidebar-note"><h3>Your next idea starts here.</h3><p><small>Share what you can do and discover who can help.</small></p><button class="primary" data-create>+ Create post</button></div>
+  </div>
+</aside>
+<main>
+  <section class="hero"><div class="eyebrow">Your campus. Your people.</div><h1>Great ideas deserve<br>great company.</h1><p>Meet study partners, exchange skills, and find people who can help bring your ideas to life.</p><button class="primary" data-page="people">Find your people →</button></section>
+  <div id="content"></div>
+</main>
+<aside class="right-column">
+  <section class="card matching"><span class="badge">✦ SWAAPE Match</span><h3 style="margin-top:12px">Turn your idea into a team.</h3><p><small>Describe what you want to create. Find people with complementary skills.</small></p><label for="idea">Your idea</label><textarea id="idea" rows="3" placeholder="I want to build a fitness app..."></textarea><button class="primary" id="matchButton">Find collaborators →</button><div id="matches" aria-live="polite"></div><p style="margin:16px 0 0"><small>Keyword-based demo, not live AI.</small></p></section>
+  <section class="card"><h3>People to know</h3><p><small>Different skills. Same campus.</small></p><div id="suggestions"></div></section>
+  <section class="card"><h3>Around campus</h3><div id="eventPreview"></div><button class="secondary" data-page="events">Explore events →</button></section>
+  <small>Fictional demo profiles and events. Posts, requests, and RSVPs stay in this browser.</small>
+</aside>
+</div>
+<dialog class="dialog" id="modal" aria-label="SWAAPE details"><div id="modalContent"></div></dialog>
+<div class="toast" id="toast" role="status"></div>
+<script>
+"use strict";
+const students = [
+ {id:1,name:"Jordan Williams",initials:"JW",course:"Computer Science · Year 2",category:"Technology",skills:["JavaScript","App development","Python"],interests:["Fitness","Startups"],availability:"Tuesday & Thursday, 4–7 pm",arrangement:"Skill exchange",bio:"Building useful apps. Looking for design and marketing collaborators.",colour:"#e4d9fa"},
+ {id:2,name:"Maya Chen",initials:"MC",course:"Business Administration · Year 3",category:"Design",skills:["UI design","Figma","Graphic design"],interests:["Creative projects","Startups"],availability:"Tuesday & Thursday, 5–7 pm",arrangement:"Skill exchange",bio:"Turning ideas into beautiful interfaces. Trading design for coding help.",colour:"#f0dffa"},
+ {id:3,name:"Daniel Okafor",initials:"DO",course:"Arts · Year 1",category:"Music",skills:["Music production","Audio editing","Songwriting"],interests:["Music","Film"],availability:"Friday, 2–6 pm",arrangement:"Free collaboration",bio:"An aspiring producer looking for singers and filmmakers.",colour:"#f8e7cf"},
+ {id:4,name:"Sofia Patel",initials:"SP",course:"Marketing · Year 2",category:"Business",skills:["Marketing","Social media","Copywriting"],interests:["Startups","Content creation"],availability:"Tuesday & Thursday, 5–8 pm",arrangement:"From $15 per project",bio:"Helping student projects find an audience through creative campaigns.",colour:"#f8dfe9"},
+ {id:5,name:"Ethan Brooks",initials:"EB",course:"Science · Year 2",category:"Study",skills:["Math","Study planning","Peer study"],interests:["Fitness","Biology"],availability:"Monday & Wednesday, 3–5 pm",arrangement:"Free collaboration",bio:"Looking for a consistent study group and student wellness projects.",colour:"#dceefa"},
+ {id:6,name:"Aisha Bello",initials:"AB",course:"Arts · Year 3",category:"Content",skills:["Videography","Video editing","Photography"],interests:["Music","Content creation"],availability:"Friday, 3–6 pm",arrangement:"Skill exchange",bio:"Trading a video shoot for help building my portfolio website.",colour:"#ddf3e8"}
+];
+const me = {id:0,name:"Amanda Eze",initials:"AE",course:"Computer Science & Business",skills:["Technology","Content creation","Business"],interests:["AI","Travel","Entrepreneurship"],availability:"Ask me about my schedule",arrangement:"Skill exchange",bio:"Looking for creative people to bring exciting ideas to life.",colour:"#e9ddff"};
+const samplePosts = [
+ {id:101,userId:3,title:"Your voice. My beats. Let’s make a track.",description:"Looking for a singer to create an original song together. Bring your ideas and let’s make something for our portfolios.",category:"Music",arrangement:"Free collaboration",tags:["Music production","Singing"],likes:18,artwork:true},
+ {id:102,userId:1,title:"Building a fitness app. Who’s in?",description:"I can handle the code. Looking for a designer and someone who loves fitness to help shape an app for students.",category:"Technology",arrangement:"Skill exchange",tags:["App development","UI design"],likes:12},
+ {id:103,userId:6,title:"A video for a website? Let’s swap.",description:"I’ll film and edit your project if you help me build my photography portfolio site. Available Friday afternoons.",category:"Content",arrangement:"Skill exchange",tags:["Videography","Web development"],likes:9},
+ {id:104,userId:5,title:"Linear algebra study crew",description:"Looking for people to practise on Wednesdays. Bring your questions and we’ll work through them together.",category:"Study",arrangement:"Free collaboration",tags:["Math","Study partners"],likes:7},
+ {id:105,userId:4,title:"Need help promoting your student project?",description:"I can help with social posts, captions, and a simple launch plan. Open to a skill exchange or an affordable project rate.",category:"Business",arrangement:"Affordable paid service",tags:["Marketing","Social media"],likes:11}
+];
+const swaps = [
+ {id:1,userId:6,title:"Video shoot for a portfolio website",offer:"A filmed and edited promotional video",need:"Help building a photography portfolio website",category:"Content"},
+ {id:2,userId:2,title:"App design for coding help",offer:"Three Figma screens for your app",need:"Help turning my website design into working code",category:"Design"},
+ {id:3,userId:1,title:"Website setup for a launch campaign",offer:"A simple website for your project",need:"A social media launch plan for my fitness app",category:"Technology"}
+];
+const events = [
+ {id:1,name:"Build & Brew",day:"16",month:"OCT",time:"4:00–6:00 pm",location:"Student Centre",category:"Business",description:"Meet student builders, designers, and future founders. Bring an idea or help someone develop theirs."},
+ {id:2,name:"Creators’ Open Mic",day:"20",month:"OCT",time:"6:00–8:00 pm",location:"Campus café",category:"Music",description:"Share a song, meet a producer, or discover your next creative collaborator."},
+ {id:3,name:"Study Together",day:"22",month:"OCT",time:"3:00–5:00 pm",location:"Library",category:"Study",description:"Bring a difficult question and meet students interested in learning together."}
+];
+const categories = ["All","Technology","Design","Music","Business","Content","Study"];
+let state = {posts:samplePosts.map(post=>({...post})),liked:[],saved:[],connections:[],rsvps:[]};
+try {
+ const stored = JSON.parse(localStorage.getItem("swaapeFullDemo"));
+ if(stored && ["posts","liked","saved","connections","rsvps"].every(key=>Array.isArray(stored[key]))) state=stored;
+} catch(error) { /* Storage is optional for the prototype. */ }
+let page="feed", category="All", query="", toastTimer;
+const $=selector=>document.querySelector(selector);
+function escapeHTML(value){return String(value).replace(/[&<>"']/g,character=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[character]));}
+function toast(message){$("#toast").textContent=message;$("#toast").style.display="block";clearTimeout(toastTimer);toastTimer=setTimeout(()=>{$("#toast").style.display="none";},3500);}
+function saveState(){try{localStorage.setItem("swaapeFullDemo",JSON.stringify(state));}catch(error){toast("Changes kept for this session only.");}}
+function person(id){return students.find(student=>student.id===id)||me;}
+function avatar(student){return '<span class="avatar" style="background:'+student.colour+'">'+escapeHTML(student.initials)+'</span>';}
+function personHeading(student){return '<div class="person">'+avatar(student)+'<div><strong>'+escapeHTML(student.name)+'</strong><small>'+escapeHTML(student.course)+'</small></div></div>';}
+function filtersHTML(){return '<div class="filters">'+categories.map(item=>'<button data-category="'+item+'" class="'+(category===item?"active":"")+'">'+item+'</button>').join("")+'</div>';}
+function matchesFilter(item,text){return (category==="All"||item.category===category)&&text.toLowerCase().includes(query);}
+function postHTML(post){
+ const student=person(post.userId),liked=state.liked.includes(post.id),saved=state.saved.includes(post.id);
+ return '<article class="card post">'+personHeading(student)+'<h3>'+escapeHTML(post.title)+'</h3><p class="post-description">'+escapeHTML(post.description)+'</p><span class="badge">'+escapeHTML(post.arrangement)+'</span>'+post.tags.map(tag=>'<span class="tag">'+escapeHTML(tag)+'</span>').join("")+(post.artwork?'<div class="artwork"><strong>GOOD MUSIC.<br>GREAT COMPANY.</strong><span aria-hidden="true">♫</span></div>':'')+'<div class="actions"><button class="action-button" data-like="'+post.id+'" aria-pressed="'+liked+'">'+(liked?"♥":"♡")+' '+(post.likes+Number(liked))+'</button><button class="action-button" data-save="'+post.id+'" aria-pressed="'+saved+'">'+(saved?"Saved ✓":"Save post")+'</button>'+(post.userId!==0?'<button class="secondary" data-profile="'+post.userId+'">View profile →</button>':'')+'</div></article>';
+}
+function studentHTML(student){
+ return '<article class="card">'+personHeading(student)+'<p class="post-description">'+escapeHTML(student.bio)+'</p><div class="profile-section"><strong>Skills</strong>'+student.skills.map(skill=>'<span class="tag">'+escapeHTML(skill)+'</span>').join("")+'</div><div class="profile-section"><strong>Interests</strong><small>'+escapeHTML(student.interests.join(" · "))+'</small></div><div class="profile-section"><strong>Availability</strong><p class="availability">'+escapeHTML(student.availability)+'</p></div><span class="badge">'+escapeHTML(student.arrangement)+'</span><div class="actions"><button class="secondary" data-profile="'+student.id+'">View profile →</button></div></article>';
+}
+function swapHTML(swap){
+ const student=person(swap.userId);
+ return '<article class="card">'+personHeading(student)+'<h3>'+escapeHTML(swap.title)+'</h3><span class="badge">Skill exchange</span><div class="swap-box"><strong>What I offer</strong><p>'+escapeHTML(swap.offer)+'</p><strong>What I need</strong><p>'+escapeHTML(swap.need)+'</p></div><p class="availability">Available: '+escapeHTML(student.availability)+'</p><button class="secondary" data-profile="'+student.id+'">Discuss this swap →</button></article>';
+}
+function eventHTML(event){
+ const interested=state.rsvps.includes(event.id);
+ return '<article class="card"><span class="badge">Fictional demo event</span><h3 style="margin-top:14px">'+escapeHTML(event.name)+'</h3><p class="post-description">'+escapeHTML(event.description)+'</p><div class="event-row"><div class="event-date">'+event.month+'<strong>'+event.day+'</strong></div><div><strong>'+escapeHTML(event.time)+'</strong><br><small>'+escapeHTML(event.location)+'</small></div></div><div class="actions"><button class="'+(interested?"secondary":"primary")+'" data-rsvp="'+event.id+'" aria-pressed="'+interested+'">'+(interested?"Interested ✓":"I’m interested")+'</button></div></article>';
+}
+function setPage(next){page=next;category="All";query="";$("#search").value="";document.querySelectorAll(".nav-button").forEach(button=>button.classList.toggle("active",button.dataset.page===page));render();}
+function render(){
+ const titles={feed:"Around your campus",people:"Discover campus talent",swaps:"Trade skills. Grow together.",connections:"Your connections",saved:"Your saved posts",events:"What’s happening on campus?"};
+ const descriptions={people:"Find people with shared interests and complementary skills.",swaps:"Offer what you know in exchange for the help you need.",connections:"Your locally saved demo connection requests. Nobody is notified.",saved:"Keep track of ideas and opportunities you want to revisit.",events:"Explore fictional events and try the local interest button."};
+ let html='<div class="section-heading"><h2>'+titles[page]+'</h2>'+(page==="feed"?'<button class="primary" data-create>+ Create post</button>':'')+'</div>';
+ if(descriptions[page])html+='<p class="page-description">'+descriptions[page]+'</p>';
+ if(page==="feed")html+='<div class="card composer">'+avatar(me)+'<button data-create>Share an idea or something you need…</button></div>';
+ html+=filtersHTML();
+ let cards=[];
+ if(page==="feed"||page==="saved")cards=state.posts.filter(post=>(page!=="saved"||state.saved.includes(post.id))&&matchesFilter(post,[post.title,post.description,person(post.userId).name,...post.tags].join(" "))).map(postHTML);
+ if(page==="people"||page==="connections")cards=students.filter(student=>(page!=="connections"||state.connections.includes(student.id))&&matchesFilter(student,[student.name,student.course,student.bio,...student.skills,...student.interests].join(" "))).map(studentHTML);
+ if(page==="swaps")cards=swaps.filter(swap=>matchesFilter(swap,[swap.title,swap.offer,swap.need,person(swap.userId).name].join(" "))).map(swapHTML);
+ if(page==="events")cards=events.filter(event=>matchesFilter(event,[event.name,event.description,event.location].join(" "))).map(eventHTML);
+ html+=cards.length?cards.join(""):'<div class="card empty"><h3>Nothing here yet.</h3><p>Try another search or explore your campus community.</p><button class="secondary" data-page="people">Discover Talent →</button></div>';
+ $("#content").innerHTML=html;
+}
+function openProfile(id){
+ const student=person(id),connected=state.connections.includes(id);
+ $("#modalContent").innerHTML='<div class="profile-cover"></div>'+personHeading(student)+'<p>'+escapeHTML(student.bio)+'</p><div class="profile-section"><strong>Skills</strong>'+student.skills.map(skill=>'<span class="tag">'+escapeHTML(skill)+'</span>').join("")+'</div><div class="profile-section"><strong>Interests</strong><p>'+escapeHTML(student.interests.join(" · "))+'</p></div><div class="profile-section"><strong>Availability</strong><p class="availability">'+escapeHTML(student.availability)+'</p></div><span class="badge">'+escapeHTML(student.arrangement)+'</span><p><small>Demo profile. Connection requests are saved locally and do not notify anyone.</small></p><div class="dialog-actions"><button class="secondary" data-close>Close</button>'+(id!==0?'<button class="primary" data-connect="'+id+'">'+(connected?"Request added ✓":"Connect →")+'</button>':'')+'</div>';
+ $("#modal").showModal();
+}
+function openComposer(){
+ $("#modalContent").innerHTML='<h2>Start something together.</h2><p><small>Share your idea and the skills you’re looking for.</small></p><form id="postForm"><div class="form-group"><label for="postTitle">What do you need?</label><input class="form-input" id="postTitle" name="title" required maxlength="100" placeholder="Looking for a designer for my app..."></div><div class="form-group"><label for="postDescription">Tell your campus more</label><textarea id="postDescription" name="description" rows="4" required maxlength="1500" placeholder="What can you offer? What help do you need?"></textarea></div><div class="form-group"><label for="postCategory">Category</label><select id="postCategory" name="category">'+categories.slice(1).map(item=>'<option>'+item+'</option>').join("")+'</select></div><div class="form-group"><label for="postArrangement">Arrangement</label><select id="postArrangement" name="arrangement"><option>Skill exchange</option><option>Free collaboration</option><option>Affordable paid service</option></select></div><div class="dialog-actions"><button type="button" class="secondary" data-close>Cancel</button><button type="submit" class="primary">Publish demo post</button></div></form>';
+ $("#modal").showModal();
+}
+function findMatches(idea){
+ const rules=[
+  {pattern:/app|website|software|code|startup/,skills:["App development","UI design","Marketing"]},
+  {pattern:/music|song|sing|producer|beat/,skills:["Music production","Videography","Marketing"]},
+  {pattern:/video|film|photo|content/,skills:["Videography","Graphic design","Marketing"]},
+  {pattern:/study|math|exam|learn/,skills:["Math","Study planning"]},
+  {pattern:/fitness|health|wellness/,skills:["Peer study","UI design"]}
+ ];
+ const needed=new Set(rules.filter(rule=>rule.pattern.test(idea)).flatMap(rule=>rule.skills));
+ return students.map(student=>{const skills=student.skills.filter(skill=>needed.has(skill));const interests=student.interests.filter(interest=>idea.includes(interest.toLowerCase()));return {student,score:skills.length*3+interests.length,reason:skills.length?"Can help with "+skills.join(", "):"Shared interest: "+interests.join(", ")};}).filter(result=>result.score>0).sort((a,b)=>b.score-a.score).slice(0,3);
+}
+function showMatches(){
+ const idea=$("#idea").value.toLowerCase().trim();
+ if(!idea){toast("Describe your idea first.");$("#idea").focus();return;}
+ const results=findMatches(idea);
+ $("#matches").innerHTML=results.length?results.map(result=>'<div class="match-result">'+personHeading(result.student)+'<p>'+escapeHTML(result.reason)+'</p><p class="availability">'+escapeHTML(result.student.availability)+'</p><button class="secondary" data-profile="'+result.student.id+'">View profile →</button></div>').join(""):'<p style="margin-top:18px"><small>Try an app, music, video, study, or fitness project.</small></p>';
+}
+document.addEventListener("click",event=>{
+ const button=event.target.closest("button");if(!button)return;
+ if(button.dataset.page){setPage(button.dataset.page);return;}
+ if(button.dataset.category){category=button.dataset.category;render();return;}
+ if(button.hasAttribute("data-create")){openComposer();return;}
+ if(button.hasAttribute("data-profile")){openProfile(Number(button.dataset.profile));return;}
+ if(button.hasAttribute("data-close")){$("#modal").close();return;}
+ if(button.hasAttribute("data-like")||button.hasAttribute("data-save")){
+  const key=button.hasAttribute("data-like")?"liked":"saved",id=Number(button.dataset.like||button.dataset.save);
+  state[key]=state[key].includes(id)?state[key].filter(value=>value!==id):[...state[key],id];saveState();render();return;
+ }
+ if(button.hasAttribute("data-connect")){
+  const id=Number(button.dataset.connect);if(!state.connections.includes(id))state.connections.push(id);
+  saveState();button.textContent="Request added ✓";render();toast("Demo connection added locally. No request was sent.");return;
+ }
+ if(button.hasAttribute("data-rsvp")){
+  const id=Number(button.dataset.rsvp);state.rsvps=state.rsvps.includes(id)?state.rsvps.filter(value=>value!==id):[...state.rsvps,id];saveState();render();toast("Your demo event preference was saved locally.");return;
+ }
+ if(button.id==="matchButton")showMatches();
+});
+document.addEventListener("submit",event=>{
+ if(event.target.id!=="postForm")return;event.preventDefault();
+ const form=new FormData(event.target),title=String(form.get("title")).trim(),description=String(form.get("description")).trim();
+ if(!title||!description){toast("Add a title and description.");return;}
+ const postCategory=String(form.get("category"));
+ state.posts.unshift({id:Date.now(),userId:0,title,description,category:postCategory,arrangement:String(form.get("arrangement")),tags:[postCategory],likes:0});
+ saveState();$("#modal").close();setPage("feed");toast("Your post is on the local demo feed.");
+});
+$("#search").addEventListener("input",event=>{query=event.target.value.toLowerCase().trim();render();});
+$("#myProfile").addEventListener("click",()=>openProfile(0));
+$("#suggestions").innerHTML=[students[1],students[3],students[5]].map(student=>'<div class="mini-person">'+avatar(student)+'<div><strong>'+escapeHTML(student.name)+'</strong><small>'+escapeHTML(student.skills[0])+'</small></div><button data-profile="'+student.id+'">View</button></div>').join("");
+$("#eventPreview").innerHTML=events.slice(0,2).map(event=>'<div class="event-row"><div class="event-date">'+event.month+'<strong>'+event.day+'</strong></div><div><strong>'+escapeHTML(event.name)+'</strong><br><small>'+escapeHTML(event.location)+'</small></div></div>').join("");
+// Show a simple fallback until the original logo is placed beside this file.
+$("#brandLogo").addEventListener("error",()=>{$("#brandLogo").hidden=true;$("#logoFallback").hidden=false;});
+if($("#brandLogo").complete&&$("#brandLogo").naturalWidth===0){$("#brandLogo").hidden=true;$("#logoFallback").hidden=false;}
+render();
+</script>
+</body>
+</html>
